@@ -1,0 +1,6 @@
+﻿bin/
+obj/
+external/
+*.user
+.vs/
+.superpowers/
