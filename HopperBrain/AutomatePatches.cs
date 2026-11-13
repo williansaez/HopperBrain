@@ -35,9 +35,12 @@ internal static class AutomatePatches
     /// <summary>Replace Automate's groups with groups split by the hopper rules.</summary>
     private static void After_GetMachineGroups(ref IEnumerable<IMachineGroup> __result, Func<IContainer[], StorageManager> ___BuildStorage, IMonitor ___Monitor)
     {
+        // run Automate's own flood fill outside the try, so its errors surface as they would without this mod
+        List<IMachineGroup> original = __result.ToList();
+
         try
         {
-            __result = Split(__result, ___BuildStorage, ___Monitor);
+            __result = Split(original, ___BuildStorage, ___Monitor);
         }
         catch (Exception ex)
         {
@@ -104,8 +107,9 @@ internal static class AutomatePatches
                     }
                 }
 
-                // part indices are ascending, so machines keep Automate's priority order
-                result.Add(new MachineGroup(group.LocationKey, machines, containers, tiles, buildStorage, monitor));
+                // part indices are ascending, so machines keep Automate's priority order;
+                // hoppers go last so output fills attached chests before the hopper (stable sort)
+                result.Add(new MachineGroup(group.LocationKey, machines, containers.OrderBy(c => c.TypeId == HopperId), tiles, buildStorage, monitor));
             }
 
             void AddEntity(object entity, NodeKind kind, Rectangle area)
