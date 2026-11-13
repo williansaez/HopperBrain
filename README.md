@@ -81,7 +81,7 @@ M M M
 
 1. Install the latest [SMAPI](https://smapi.io).
 2. Install [Automate](https://www.nexusmods.com/stardewvalley/mods/1063) 2.6.1 or later.
-3. Download `HopperBrain 1.0.0.zip` from the [releases page](https://github.com/williansaez/HopperBrain/releases) and unzip it into `Stardew Valley/Mods`.
+3. Download the latest `HopperBrain.x.y.z.zip` from the [releases page](https://github.com/williansaez/HopperBrain/releases) and unzip it into `Stardew Valley/Mods`.
 4. Run the game using SMAPI.
 
 You can add or remove the mod mid-save. Nothing is stored in your save: removing it just brings back normal Automate behaviour. Items already inside hoppers stay there.
