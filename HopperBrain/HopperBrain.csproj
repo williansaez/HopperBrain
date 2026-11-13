@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <RootNamespace>HopperBrain</RootNamespace>
+    <AssemblyName>HopperBrain</AssemblyName>
+    <Version>1.0.0</Version>
+    <EnableHarmony>true</EnableHarmony>
+    <!-- SMAPI 4.x runs on .NET 6; SDK 10 warns it is end-of-life -->
+    <CheckEolTargetFramework>false</CheckEolTargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Krafs.Publicizer" Version="2.3.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Automate" HintPath="$(GameModsPath)\Automate\Automate.dll" Private="false" />
+    <Publicize Include="Automate" />
+  </ItemGroup>
+
+</Project>

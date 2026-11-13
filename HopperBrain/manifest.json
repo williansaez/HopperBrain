@@ -1,0 +1,16 @@
+{
+  "Name": "Hopper Brain - Automate Rebalance",
+  "Author": "WillianSaez",
+  "Version": "1.0.0",
+  "Description": "Only hoppers activate Automate. Chests join a machine group only by touching a hopper.",
+  "UniqueID": "WillianSaez.HopperBrain",
+  "EntryDll": "HopperBrain.dll",
+  "MinimumApiVersion": "4.5.0",
+  "Dependencies": [
+    {
+      "UniqueID": "Pathoschild.Automate",
+      "MinimumVersion": "2.6.1"
+    }
+  ],
+  "UpdateKeys": []
+}
