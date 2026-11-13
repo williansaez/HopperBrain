@@ -12,5 +12,5 @@
       "MinimumVersion": "2.6.1"
     }
   ],
-  "UpdateKeys": []
+  "UpdateKeys": [ "GitHub:williansaez/HopperBrain" ]
 }
