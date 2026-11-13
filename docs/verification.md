@@ -20,11 +20,13 @@ After 1 in-game hour, run `automate summary` in the SMAPI console.
 
 | # | Layout | Expected | Result |
 |---|---|---|---|
-| 1 | `B M M` | red, furnaces idle | |
-| 2 | `B H M M` | green, both furnaces smelt, bars go to chest | |
-| 3 | `B M H` (ore in chest) | chest not used; furnace only uses what's in the hopper | |
-| 4 | `B B H M` | only the chest touching H is used | |
-| 5 | 3x3: `BBB / MHM / MMM` | green, all 5 furnaces fed from the 3 chests | |
-| 6 | `H M M` (ore in hopper) | green, bars stored in the hopper | |
-| 7 | `H` touching a tapper on a tree | tapper output goes into the hopper | |
-| 8 | `B H` + tapper tree, try chest on each side of the hopper (left, right, above, below) | tapper output goes into the chest in all 4 cases, never the hopper | |
+| 1 | `B M M` | red, furnaces idle | OK |
+| 2 | `B H M M` | green, both furnaces smelt, bars go to chest | OK |
+| 3 | `B M H` (ore in chest) | chest not used; furnace only uses what's in the hopper | OK |
+| 4 | `B B H M` | only the chest touching H is used | OK |
+| 5 | 3x3: `BBB / MHM / MMM` | green, all 5 furnaces fed from the 3 chests | OK |
+| 6 | `H M M` (ore in hopper) | green, bars stored in the hopper | OK |
+| 7 | `H` touching a tapper on a tree | tapper output goes into the hopper | OK |
+| 8 | `B H` + tapper tree, try chest on each side of the hopper (left, right, above, below) | tapper output goes into the chest in all 4 cases, never the hopper | OK |
+
+Result (2026-11-13): user confirmed all layouts work as expected. SMAPI log after the session: save loaded, no errors from Hopper Brain or Automate.
