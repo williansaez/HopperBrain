@@ -1,8 +1,11 @@
 using System;
+using System.Linq;
 using HarmonyLib;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
+using StardewValley;
 using StardewValley.GameData.BigCraftables;
+using StardewValley.GameData.Shops;
 
 namespace HopperBrain;
 
@@ -12,12 +15,25 @@ internal sealed class ModEntry : Mod
     /// <summary>Automate's context tag which makes a storage take-only.</summary>
     private const string TakeOnlyTag = "automate_storage_take";
 
+    /// <summary>The hopper's key in Data/CraftingRecipes.</summary>
+    private const string RecipeName = "Hopper";
+
+    /// <summary>The hopper's qualified item ID.</summary>
+    private const string HopperItemId = "(BC)275";
+
     /// <summary>Whether Automate was already disabled, to avoid repeating the error.</summary>
     private bool Disabled;
 
+    /// <summary>The mod settings.</summary>
+    private ModConfig Config = null!; // set in Entry
+
     public override void Entry(IModHelper helper)
     {
+        this.Config = helper.ReadConfig<ModConfig>();
+
         helper.Events.Content.AssetRequested += this.OnAssetRequested;
+        helper.Events.GameLoop.GameLaunched += this.OnGameLaunched;
+        helper.Events.GameLoop.DayStarted += this.OnDayStarted;
 
         try
         {
@@ -29,19 +45,143 @@ internal sealed class ModEntry : Mod
         }
     }
 
-    /// <summary>Let the hopper store items too (Automate marks it take-only).</summary>
+    /// <summary>Edit game data: hopper storage, recipe cost, and Robin's shop.</summary>
     private void OnAssetRequested(object? sender, AssetRequestedEventArgs e)
     {
-        if (!e.NameWithoutLocale.IsEquivalentTo("Data/BigCraftables"))
+        // let the hopper store items too (Automate marks it take-only); late priority so this runs after Automate adds the tag
+        if (e.NameWithoutLocale.IsEquivalentTo("Data/BigCraftables"))
+        {
+            e.Edit(asset =>
+            {
+                var data = asset.AsDictionary<string, BigCraftableData>().Data;
+                if (data.TryGetValue("275", out BigCraftableData? hopper))
+                    hopper.ContextTags?.RemoveAll(tag => tag == TakeOnlyTag);
+            }, AssetEditPriority.Late);
+        }
+
+        // recipe cost (vanilla leaves the recipe untouched)
+        else if (e.NameWithoutLocale.IsEquivalentTo("Data/CraftingRecipes") && HopperRecipe.Ingredients(this.Config.RecipeCost) is string ingredients)
+        {
+            e.Edit(asset =>
+            {
+                var data = asset.AsDictionary<string, string>().Data;
+                if (data.TryGetValue(RecipeName, out string? recipe))
+                {
+                    int slash = recipe.IndexOf('/');
+                    data[RecipeName] = slash < 0 ? ingredients : ingredients + recipe[slash..];
+                }
+            });
+        }
+
+        // Robin sells the recipe and hopper only when unlock = Robin
+        else if (e.NameWithoutLocale.IsEquivalentTo("Data/Shops") && this.Config.RecipeUnlock == RecipeUnlock.Robin)
+        {
+            e.Edit(asset =>
+            {
+                var data = asset.AsDictionary<string, ShopData>().Data;
+                if (!data.TryGetValue("Carpenter", out ShopData? shop))
+                    return;
+
+                shop.Items.Add(new ShopItemData
+                {
+                    Id = $"{this.ModManifest.UniqueID}_Recipe",
+                    ItemId = HopperItemId,
+                    IsRecipe = true,
+                    Price = HopperRecipe.ClampPrice(this.Config.RobinRecipePrice),
+                    Condition = $"!PLAYER_HAS_CRAFTING_RECIPE Current {RecipeName}"
+                });
+                shop.Items.Add(new ShopItemData
+                {
+                    Id = $"{this.ModManifest.UniqueID}_Hopper",
+                    ItemId = HopperItemId,
+                    Price = HopperRecipe.ClampPrice(this.Config.RobinHopperPrice)
+                });
+            });
+        }
+    }
+
+    /// <summary>Grant the recipe if the player meets the unlock rule. Never removes it.</summary>
+    private void OnDayStarted(object? sender, DayStartedEventArgs e)
+    {
+        Farmer player = Game1.player;
+        if (HopperRecipe.ShouldKnow(this.Config.RecipeUnlock, player.FarmingLevel) && !player.craftingRecipes.ContainsKey(RecipeName))
+        {
+            player.craftingRecipes.Add(RecipeName, 0);
+            this.Monitor.Log($"Learned the hopper recipe ({this.Config.RecipeUnlock}).", LogLevel.Info);
+        }
+    }
+
+    /// <summary>Register the config UI with Generic Mod Config Menu, if installed.</summary>
+    private void OnGameLaunched(object? sender, GameLaunchedEventArgs e)
+    {
+        var gmcm = this.Helper.ModRegistry.GetApi<IGenericModConfigMenuApi>("spacechase0.GenericModConfigMenu");
+        if (gmcm is null)
             return;
 
-        // late priority so this runs after Automate adds the tag
-        e.Edit(asset =>
-        {
-            var data = asset.AsDictionary<string, BigCraftableData>().Data;
-            if (data.TryGetValue("275", out BigCraftableData? hopper))
-                hopper.ContextTags?.RemoveAll(tag => tag == TakeOnlyTag);
-        }, AssetEditPriority.Late);
+        const string paNote = " Leave on Vanilla if you use Primitive Automate.";
+
+        gmcm.Register(
+            mod: this.ModManifest,
+            reset: () => this.Config = new ModConfig(),
+            save: () =>
+            {
+                this.Helper.WriteConfig(this.Config);
+                this.Helper.GameContent.InvalidateCache("Data/CraftingRecipes");
+                this.Helper.GameContent.InvalidateCache("Data/Shops");
+            }
+        );
+
+        gmcm.AddSectionTitle(this.ModManifest, () => "Hopper recipe");
+        gmcm.AddTextOption(
+            mod: this.ModManifest,
+            name: () => "Recipe cost",
+            tooltip: () => "Ingredients to craft a hopper. Vanilla: 10 hardwood, 1 iridium bar, 1 radioactive bar." + paNote,
+            getValue: () => this.Config.RecipeCost.ToString(),
+            setValue: value => this.Config.RecipeCost = Enum.Parse<RecipeCost>(value),
+            allowedValues: Enum.GetNames<RecipeCost>(),
+            formatAllowedValue: value => value switch
+            {
+                nameof(RecipeCost.Copper) => "Copper: 50 wood, 5 copper bars",
+                nameof(RecipeCost.Iron) => "Iron: 10 hardwood, 5 iron bars",
+                nameof(RecipeCost.Gold) => "Gold: 10 hardwood, 5 gold bars, 3 clay",
+                nameof(RecipeCost.Iridium) => "Iridium: 10 hardwood, 1 iridium bar, 1 battery",
+                _ => "Vanilla"
+            }
+        );
+        gmcm.AddTextOption(
+            mod: this.ModManifest,
+            name: () => "Recipe unlock",
+            tooltip: () => "When you get the hopper recipe. Takes effect the next morning; a learned recipe is never removed." + paNote,
+            getValue: () => this.Config.RecipeUnlock.ToString(),
+            setValue: value => this.Config.RecipeUnlock = Enum.Parse<RecipeUnlock>(value),
+            allowedValues: Enum.GetNames<RecipeUnlock>(),
+            formatAllowedValue: value => value switch
+            {
+                nameof(RecipeUnlock.Start) => "From the start",
+                nameof(RecipeUnlock.Farming4) => "Farming level 4",
+                nameof(RecipeUnlock.Farming9) => "Farming level 9",
+                nameof(RecipeUnlock.Robin) => "Buy from Robin",
+                _ => "Vanilla (Qi's Walnut Room)"
+            }
+        );
+
+        gmcm.AddSectionTitle(this.ModManifest, () => "Robin's shop", () => "Only used when Recipe unlock is 'Buy from Robin'.");
+        gmcm.AddNumberOption(
+            mod: this.ModManifest,
+            name: () => "Recipe price",
+            tooltip: () => "Gold price for the hopper recipe at Robin's shop.",
+            getValue: () => this.Config.RobinRecipePrice,
+            setValue: value => this.Config.RobinRecipePrice = value,
+            min: 0
+        );
+        gmcm.AddNumberOption(
+            mod: this.ModManifest,
+            name: () => "Hopper price",
+            tooltip: () => "Gold price for one hopper at Robin's shop.",
+            getValue: () => this.Config.RobinHopperPrice,
+            setValue: value => this.Config.RobinHopperPrice = value,
+            min: 0
+        );
     }
 
     /// <summary>Turn Automate off so plain chests can never automate when the patch isn't active.</summary>

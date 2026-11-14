@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <RootNamespace>HopperBrain</RootNamespace>
     <AssemblyName>HopperBrain</AssemblyName>
-    <Version>1.0.0</Version>
+    <Version>1.1.0</Version>
     <EnableHarmony>true</EnableHarmony>
     <!-- SMAPI 4.x runs on .NET 6; SDK 10 warns it is end-of-life -->
     <CheckEolTargetFramework>false</CheckEolTargetFramework>

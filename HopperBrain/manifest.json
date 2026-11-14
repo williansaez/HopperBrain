@@ -1,7 +1,7 @@
 {
   "Name": "Hopper Brain - Automate Rebalance",
   "Author": "WillianSaez",
-  "Version": "1.0.0",
+  "Version": "1.1.0",
   "Description": "Only hoppers activate Automate. Chests join a machine group only by touching a hopper.",
   "UniqueID": "WillianSaez.HopperBrain",
   "EntryDll": "HopperBrain.dll",
@@ -10,7 +10,13 @@
     {
       "UniqueID": "Pathoschild.Automate",
       "MinimumVersion": "2.6.1"
+    },
+    {
+      "UniqueID": "spacechase0.GenericModConfigMenu",
+      "IsRequired": false
     }
   ],
-  "UpdateKeys": [ "GitHub:williansaez/HopperBrain" ]
+  "UpdateKeys": [
+    "GitHub:williansaez/HopperBrain"
+  ]
 }
