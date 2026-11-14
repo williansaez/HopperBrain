@@ -20,7 +20,11 @@ public class TranslationTests
             Assert.Contains($"config.unlock.{name}", keys);
     }
 
-    [Fact]
-    public void PtBr_HasSameKeysAsDefault() =>
-        Assert.Equal(Load("default.json").Keys.Order(), Load("pt-BR.json").Keys.Order());
+    [Theory]
+    [InlineData("pt-BR.json")]
+    [InlineData("zh.json")]
+    [InlineData("ru.json")]
+    [InlineData("es.json")]
+    public void Translation_HasSameKeysAsDefault(string file) =>
+        Assert.Equal(Load("default.json").Keys.Order(), Load(file).Keys.Order());
 }

@@ -1,0 +1,25 @@
+{
+  "config.section.recipe": "Рецепт бункера",
+  "config.cost.name": "Стоимость рецепта",
+  "config.cost.tooltip": "Материалы для создания бункера. Ванильно: 10 твёрдой древесины, 1 иридиевый слиток, 1 радиоактивный слиток. Оставьте «Ванильно», если используете Primitive Automate.",
+  "config.cost.Vanilla": "Ванильно",
+  "config.cost.Copper": "Медь: 50 древесины, 5 медных слитков",
+  "config.cost.Iron": "Железо: 10 твёрдой древесины, 5 железных слитков",
+  "config.cost.Gold": "Золото: 10 твёрдой древесины, 5 золотых слитков, 3 глины",
+  "config.cost.Iridium": "Иридий: 10 твёрдой древесины, 1 иридиевый слиток, 1 батарейка",
+
+  "config.unlock.name": "Открытие рецепта",
+  "config.unlock.tooltip": "Когда вы получаете рецепт бункера. Вступает в силу на следующее утро; изученный рецепт никогда не удаляется. Оставьте «Ванильно», если используете Primitive Automate.",
+  "config.unlock.Vanilla": "Ванильно (комната орехов Ци)",
+  "config.unlock.Start": "С самого начала",
+  "config.unlock.Farming4": "Земледелие, уровень 4",
+  "config.unlock.Farming9": "Земледелие, уровень 9",
+  "config.unlock.Robin": "Купить у Робин",
+
+  "config.section.robin": "Магазин Робин",
+  "config.section.robin.tooltip": "Используется, только если открытие рецепта — «Купить у Робин».",
+  "config.robin-recipe.name": "Цена рецепта",
+  "config.robin-recipe.tooltip": "Цена рецепта бункера в золоте в магазине Робин.",
+  "config.robin-hopper.name": "Цена бункера",
+  "config.robin-hopper.tooltip": "Цена одного бункера в золоте в магазине Робин."
+}

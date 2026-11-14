@@ -1,0 +1,25 @@
+{
+  "config.section.recipe": "漏斗配方",
+  "config.cost.name": "配方成本",
+  "config.cost.tooltip": "制作漏斗所需的材料。原版：10 个硬木、1 个铱锭、1 个放射性锭。如果你使用 Primitive Automate，请保持为原版。",
+  "config.cost.Vanilla": "原版",
+  "config.cost.Copper": "铜：50 个木材、5 个铜锭",
+  "config.cost.Iron": "铁：10 个硬木、5 个铁锭",
+  "config.cost.Gold": "金：10 个硬木、5 个金锭、3 个粘土",
+  "config.cost.Iridium": "铱：10 个硬木、1 个铱锭、1 个电池组",
+
+  "config.unlock.name": "配方解锁",
+  "config.unlock.tooltip": "何时获得漏斗配方。第二天早上生效；已学会的配方永远不会被移除。如果你使用 Primitive Automate，请保持为原版。",
+  "config.unlock.Vanilla": "原版（齐先生的核桃房）",
+  "config.unlock.Start": "从一开始",
+  "config.unlock.Farming4": "耕种等级 4",
+  "config.unlock.Farming9": "耕种等级 9",
+  "config.unlock.Robin": "从罗宾处购买",
+
+  "config.section.robin": "罗宾的商店",
+  "config.section.robin.tooltip": "仅在配方解锁为“从罗宾处购买”时使用。",
+  "config.robin-recipe.name": "配方价格",
+  "config.robin-recipe.tooltip": "罗宾商店中漏斗配方的金币价格。",
+  "config.robin-hopper.name": "漏斗价格",
+  "config.robin-hopper.tooltip": "罗宾商店中单个漏斗的金币价格。"
+}

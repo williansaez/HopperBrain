@@ -1,0 +1,25 @@
+{
+  "config.section.recipe": "Receta de la tolva",
+  "config.cost.name": "Coste de la receta",
+  "config.cost.tooltip": "Materiales para fabricar una tolva. Original: 10 de madera noble, 1 lingote de iridio, 1 lingote radiactivo. Déjalo en Original si usas Primitive Automate.",
+  "config.cost.Vanilla": "Original",
+  "config.cost.Copper": "Cobre: 50 de madera, 5 lingotes de cobre",
+  "config.cost.Iron": "Hierro: 10 de madera noble, 5 lingotes de hierro",
+  "config.cost.Gold": "Oro: 10 de madera noble, 5 lingotes de oro, 3 de arcilla",
+  "config.cost.Iridium": "Iridio: 10 de madera noble, 1 lingote de iridio, 1 batería",
+
+  "config.unlock.name": "Desbloqueo de la receta",
+  "config.unlock.tooltip": "Cuándo obtienes la receta de la tolva. Se aplica a la mañana siguiente; una receta aprendida nunca se elimina. Déjalo en Original si usas Primitive Automate.",
+  "config.unlock.Vanilla": "Original (Sala de las nueces de Qi)",
+  "config.unlock.Start": "Desde el inicio",
+  "config.unlock.Farming4": "Agricultura nivel 4",
+  "config.unlock.Farming9": "Agricultura nivel 9",
+  "config.unlock.Robin": "Comprar a Robin",
+
+  "config.section.robin": "Tienda de Robin",
+  "config.section.robin.tooltip": "Solo se usa cuando el desbloqueo de la receta es «Comprar a Robin».",
+  "config.robin-recipe.name": "Precio de la receta",
+  "config.robin-recipe.tooltip": "Precio en oro de la receta de la tolva en la tienda de Robin.",
+  "config.robin-hopper.name": "Precio de la tolva",
+  "config.robin-hopper.tooltip": "Precio en oro de una tolva en la tienda de Robin."
+}
