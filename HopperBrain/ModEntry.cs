@@ -128,7 +128,8 @@ internal sealed class ModEntry : Mod
         if (gmcm is null)
             return;
 
-        const string paNote = " Leave on Vanilla if you use Primitive Automate.";
+        // lambdas so labels follow the game language even if it changes after launch
+        string T(string key) => this.Helper.Translation.Get(key);
 
         gmcm.Register(
             mod: this.ModManifest,
@@ -142,53 +143,39 @@ internal sealed class ModEntry : Mod
             }
         );
 
-        gmcm.AddSectionTitle(this.ModManifest, () => "Hopper recipe");
+        gmcm.AddSectionTitle(this.ModManifest, () => T("config.section.recipe"));
         gmcm.AddTextOption(
             mod: this.ModManifest,
-            name: () => "Recipe cost",
-            tooltip: () => "Ingredients to craft a hopper. Vanilla: 10 hardwood, 1 iridium bar, 1 radioactive bar." + paNote,
+            name: () => T("config.cost.name"),
+            tooltip: () => T("config.cost.tooltip"),
             getValue: () => this.Config.RecipeCost.ToString(),
             setValue: value => this.Config.RecipeCost = Enum.Parse<RecipeCost>(value),
             allowedValues: Enum.GetNames<RecipeCost>(),
-            formatAllowedValue: value => value switch
-            {
-                nameof(RecipeCost.Copper) => "Copper: 50 wood, 5 copper bars",
-                nameof(RecipeCost.Iron) => "Iron: 10 hardwood, 5 iron bars",
-                nameof(RecipeCost.Gold) => "Gold: 10 hardwood, 5 gold bars, 3 clay",
-                nameof(RecipeCost.Iridium) => "Iridium: 10 hardwood, 1 iridium bar, 1 battery",
-                _ => "Vanilla"
-            }
+            formatAllowedValue: value => T($"config.cost.{value}")
         );
         gmcm.AddTextOption(
             mod: this.ModManifest,
-            name: () => "Recipe unlock",
-            tooltip: () => "When you get the hopper recipe. Takes effect the next morning; a learned recipe is never removed." + paNote,
+            name: () => T("config.unlock.name"),
+            tooltip: () => T("config.unlock.tooltip"),
             getValue: () => this.Config.RecipeUnlock.ToString(),
             setValue: value => this.Config.RecipeUnlock = Enum.Parse<RecipeUnlock>(value),
             allowedValues: Enum.GetNames<RecipeUnlock>(),
-            formatAllowedValue: value => value switch
-            {
-                nameof(RecipeUnlock.Start) => "From the start",
-                nameof(RecipeUnlock.Farming4) => "Farming level 4",
-                nameof(RecipeUnlock.Farming9) => "Farming level 9",
-                nameof(RecipeUnlock.Robin) => "Buy from Robin",
-                _ => "Vanilla (Qi's Walnut Room)"
-            }
+            formatAllowedValue: value => T($"config.unlock.{value}")
         );
 
-        gmcm.AddSectionTitle(this.ModManifest, () => "Robin's shop", () => "Only used when Recipe unlock is 'Buy from Robin'.");
+        gmcm.AddSectionTitle(this.ModManifest, () => T("config.section.robin"), () => T("config.section.robin.tooltip"));
         gmcm.AddNumberOption(
             mod: this.ModManifest,
-            name: () => "Recipe price",
-            tooltip: () => "Gold price for the hopper recipe at Robin's shop.",
+            name: () => T("config.robin-recipe.name"),
+            tooltip: () => T("config.robin-recipe.tooltip"),
             getValue: () => this.Config.RobinRecipePrice,
             setValue: value => this.Config.RobinRecipePrice = value,
             min: 0
         );
         gmcm.AddNumberOption(
             mod: this.ModManifest,
-            name: () => "Hopper price",
-            tooltip: () => "Gold price for one hopper at Robin's shop.",
+            name: () => T("config.robin-hopper.name"),
+            tooltip: () => T("config.robin-hopper.tooltip"),
             getValue: () => this.Config.RobinHopperPrice,
             setValue: value => this.Config.RobinHopperPrice = value,
             min: 0

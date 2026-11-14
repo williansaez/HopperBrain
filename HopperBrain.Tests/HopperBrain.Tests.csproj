@@ -18,6 +18,7 @@
     <Compile Include="..\HopperBrain\GroupPartitioner.cs" Link="GroupPartitioner.cs" />
     <Compile Include="..\HopperBrain\HopperRecipe.cs" Link="HopperRecipe.cs" />
     <Compile Include="..\HopperBrain\ModConfig.cs" Link="ModConfig.cs" />
+    <None Include="..\HopperBrain\i18n\*.json" LinkBase="i18n" CopyToOutputDirectory="PreserveNewest" />
     <Using Include="Xunit" />
   </ItemGroup>
 

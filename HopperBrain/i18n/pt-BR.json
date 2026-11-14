@@ -1,0 +1,25 @@
+{
+  "config.section.recipe": "Receita do funil",
+  "config.cost.name": "Custo da receita",
+  "config.cost.tooltip": "Ingredientes para fabricar um funil. Vanilla: 10 madeiras de lei, 1 barra de irídio, 1 barra radioativa. Deixe em Vanilla se usar o Primitive Automate.",
+  "config.cost.Vanilla": "Vanilla",
+  "config.cost.Copper": "Cobre: 50 madeiras, 5 barras de cobre",
+  "config.cost.Iron": "Ferro: 10 madeiras de lei, 5 barras de ferro",
+  "config.cost.Gold": "Ouro: 10 madeiras de lei, 5 barras de ouro, 3 argilas",
+  "config.cost.Iridium": "Irídio: 10 madeiras de lei, 1 barra de irídio, 1 bateria",
+
+  "config.unlock.name": "Liberação da receita",
+  "config.unlock.tooltip": "Quando você ganha a receita do funil. Vale a partir da manhã seguinte; uma receita aprendida nunca é removida. Deixe em Vanilla se usar o Primitive Automate.",
+  "config.unlock.Vanilla": "Vanilla (Sala das Nozes do Qi)",
+  "config.unlock.Start": "Desde o início",
+  "config.unlock.Farming4": "Cultivo nível 4",
+  "config.unlock.Farming9": "Cultivo nível 9",
+  "config.unlock.Robin": "Comprar da Robin",
+
+  "config.section.robin": "Loja da Robin",
+  "config.section.robin.tooltip": "Só é usado quando a liberação da receita é 'Comprar da Robin'.",
+  "config.robin-recipe.name": "Preço da receita",
+  "config.robin-recipe.tooltip": "Preço em ouro da receita do funil na loja da Robin.",
+  "config.robin-hopper.name": "Preço do funil",
+  "config.robin-hopper.tooltip": "Preço em ouro de um funil na loja da Robin."
+}

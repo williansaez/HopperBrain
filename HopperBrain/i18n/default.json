@@ -1,0 +1,25 @@
+{
+  "config.section.recipe": "Hopper recipe",
+  "config.cost.name": "Recipe cost",
+  "config.cost.tooltip": "Ingredients to craft a hopper. Vanilla: 10 hardwood, 1 iridium bar, 1 radioactive bar. Leave on Vanilla if you use Primitive Automate.",
+  "config.cost.Vanilla": "Vanilla",
+  "config.cost.Copper": "Copper: 50 wood, 5 copper bars",
+  "config.cost.Iron": "Iron: 10 hardwood, 5 iron bars",
+  "config.cost.Gold": "Gold: 10 hardwood, 5 gold bars, 3 clay",
+  "config.cost.Iridium": "Iridium: 10 hardwood, 1 iridium bar, 1 battery",
+
+  "config.unlock.name": "Recipe unlock",
+  "config.unlock.tooltip": "When you get the hopper recipe. Takes effect the next morning; a learned recipe is never removed. Leave on Vanilla if you use Primitive Automate.",
+  "config.unlock.Vanilla": "Vanilla (Qi's Walnut Room)",
+  "config.unlock.Start": "From the start",
+  "config.unlock.Farming4": "Farming level 4",
+  "config.unlock.Farming9": "Farming level 9",
+  "config.unlock.Robin": "Buy from Robin",
+
+  "config.section.robin": "Robin's shop",
+  "config.section.robin.tooltip": "Only used when Recipe unlock is 'Buy from Robin'.",
+  "config.robin-recipe.name": "Recipe price",
+  "config.robin-recipe.tooltip": "Gold price for the hopper recipe at Robin's shop.",
+  "config.robin-hopper.name": "Hopper price",
+  "config.robin-hopper.tooltip": "Gold price for one hopper at Robin's shop."
+}
