@@ -1,0 +1,25 @@
+{
+  "config.section.recipe": "Trichter-Rezept",
+  "config.cost.name": "Rezeptkosten",
+  "config.cost.tooltip": "Zutaten zum Herstellen eines Trichters. Original: 10 Hartholz, 1 Iridiumbarren, 1 radioaktiver Barren. Lass es auf Original, wenn du Primitive Automate nutzt.",
+  "config.cost.Vanilla": "Original",
+  "config.cost.Copper": "Kupfer: 50 Holz, 5 Kupferbarren",
+  "config.cost.Iron": "Eisen: 10 Hartholz, 5 Eisenbarren",
+  "config.cost.Gold": "Gold: 10 Hartholz, 5 Goldbarren, 3 Lehm",
+  "config.cost.Iridium": "Iridium: 10 Hartholz, 1 Iridiumbarren, 1 Batterie",
+
+  "config.unlock.name": "Rezept-Freischaltung",
+  "config.unlock.tooltip": "Wann du das Trichter-Rezept bekommst. Gilt ab dem nächsten Morgen; ein gelerntes Rezept wird nie entfernt. Lass es auf Original, wenn du Primitive Automate nutzt.",
+  "config.unlock.Vanilla": "Original (Qis Walnuss-Raum)",
+  "config.unlock.Start": "Von Anfang an",
+  "config.unlock.Farming4": "Landwirtschaft Stufe 4",
+  "config.unlock.Farming9": "Landwirtschaft Stufe 9",
+  "config.unlock.Robin": "Bei Robin kaufen",
+
+  "config.section.robin": "Robins Laden",
+  "config.section.robin.tooltip": "Wird nur verwendet, wenn die Rezept-Freischaltung „Bei Robin kaufen“ ist.",
+  "config.robin-recipe.name": "Rezeptpreis",
+  "config.robin-recipe.tooltip": "Goldpreis für das Trichter-Rezept in Robins Laden.",
+  "config.robin-hopper.name": "Trichterpreis",
+  "config.robin-hopper.tooltip": "Goldpreis für einen Trichter in Robins Laden."
+}

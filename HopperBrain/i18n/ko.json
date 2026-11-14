@@ -1,0 +1,25 @@
+{
+  "config.section.recipe": "호퍼 제작법",
+  "config.cost.name": "제작 재료",
+  "config.cost.tooltip": "호퍼를 만드는 데 필요한 재료입니다. 원본: 단단한 나무 10, 이리듐 주괴 1, 방사성 주괴 1. Primitive Automate를 사용한다면 원본으로 두세요.",
+  "config.cost.Vanilla": "원본",
+  "config.cost.Copper": "구리: 나무 50, 구리 주괴 5",
+  "config.cost.Iron": "철: 단단한 나무 10, 철 주괴 5",
+  "config.cost.Gold": "금: 단단한 나무 10, 금 주괴 5, 점토 3",
+  "config.cost.Iridium": "이리듐: 단단한 나무 10, 이리듐 주괴 1, 배터리 팩 1",
+
+  "config.unlock.name": "제작법 해금",
+  "config.unlock.tooltip": "호퍼 제작법을 얻는 시점입니다. 다음 날 아침부터 적용되며, 배운 제작법은 절대 사라지지 않습니다. Primitive Automate를 사용한다면 원본으로 두세요.",
+  "config.unlock.Vanilla": "원본 (미스터 치의 호두 방)",
+  "config.unlock.Start": "처음부터",
+  "config.unlock.Farming4": "농사 레벨 4",
+  "config.unlock.Farming9": "농사 레벨 9",
+  "config.unlock.Robin": "로빈에게 구매",
+
+  "config.section.robin": "로빈의 상점",
+  "config.section.robin.tooltip": "제작법 해금이 '로빈에게 구매'일 때만 사용됩니다.",
+  "config.robin-recipe.name": "제작법 가격",
+  "config.robin-recipe.tooltip": "로빈의 상점에서 호퍼 제작법의 골드 가격입니다.",
+  "config.robin-hopper.name": "호퍼 가격",
+  "config.robin-hopper.tooltip": "로빈의 상점에서 호퍼 1개의 골드 가격입니다."
+}

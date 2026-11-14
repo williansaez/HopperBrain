@@ -25,6 +25,13 @@ public class TranslationTests
     [InlineData("zh.json")]
     [InlineData("ru.json")]
     [InlineData("es.json")]
+    [InlineData("de.json")]
+    [InlineData("fr.json")]
+    [InlineData("hu.json")]
+    [InlineData("it.json")]
+    [InlineData("ja.json")]
+    [InlineData("ko.json")]
+    [InlineData("tr.json")]
     public void Translation_HasSameKeysAsDefault(string file) =>
         Assert.Equal(Load("default.json").Keys.Order(), Load(file).Keys.Order());
 }

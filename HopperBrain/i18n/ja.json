@@ -1,0 +1,25 @@
+{
+  "config.section.recipe": "ホッパーのレシピ",
+  "config.cost.name": "レシピの材料",
+  "config.cost.tooltip": "ホッパーを作るのに必要な材料。オリジナル：硬い木材10、イリジウムインゴット1、放射性インゴット1。Primitive Automateを使う場合はオリジナルのままにしてください。",
+  "config.cost.Vanilla": "オリジナル",
+  "config.cost.Copper": "銅：木材50、銅インゴット5",
+  "config.cost.Iron": "鉄：硬い木材10、鉄インゴット5",
+  "config.cost.Gold": "金：硬い木材10、金インゴット5、粘土3",
+  "config.cost.Iridium": "イリジウム：硬い木材10、イリジウムインゴット1、バッテリーパック1",
+
+  "config.unlock.name": "レシピの入手方法",
+  "config.unlock.tooltip": "ホッパーのレシピを入手するタイミング。翌朝から有効です。覚えたレシピが消えることはありません。Primitive Automateを使う場合はオリジナルのままにしてください。",
+  "config.unlock.Vanilla": "オリジナル（ミスター・Qのクルミ部屋）",
+  "config.unlock.Start": "最初から",
+  "config.unlock.Farming4": "農業レベル4",
+  "config.unlock.Farming9": "農業レベル9",
+  "config.unlock.Robin": "ロビンから購入",
+
+  "config.section.robin": "ロビンの店",
+  "config.section.robin.tooltip": "レシピの入手方法が「ロビンから購入」のときのみ使われます。",
+  "config.robin-recipe.name": "レシピの価格",
+  "config.robin-recipe.tooltip": "ロビンの店でのホッパーのレシピの価格（G）。",
+  "config.robin-hopper.name": "ホッパーの価格",
+  "config.robin-hopper.tooltip": "ロビンの店でのホッパー1個の価格（G）。"
+}

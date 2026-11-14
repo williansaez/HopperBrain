@@ -1,0 +1,25 @@
+{
+  "config.section.recipe": "Huni tarifi",
+  "config.cost.name": "Tarif maliyeti",
+  "config.cost.tooltip": "Bir huni üretmek için gereken malzemeler. Orijinal: 10 sert odun, 1 iridyum külçe, 1 radyoaktif külçe. Primitive Automate kullanıyorsan Orijinal olarak bırak.",
+  "config.cost.Vanilla": "Orijinal",
+  "config.cost.Copper": "Bakır: 50 odun, 5 bakır külçe",
+  "config.cost.Iron": "Demir: 10 sert odun, 5 demir külçe",
+  "config.cost.Gold": "Altın: 10 sert odun, 5 altın külçe, 3 kil",
+  "config.cost.Iridium": "İridyum: 10 sert odun, 1 iridyum külçe, 1 pil",
+
+  "config.unlock.name": "Tarif kilidi",
+  "config.unlock.tooltip": "Huni tarifini ne zaman alacağın. Ertesi sabah geçerli olur; öğrenilen tarif asla silinmez. Primitive Automate kullanıyorsan Orijinal olarak bırak.",
+  "config.unlock.Vanilla": "Orijinal (Qi'nin Ceviz Odası)",
+  "config.unlock.Start": "Baştan itibaren",
+  "config.unlock.Farming4": "Çiftçilik seviye 4",
+  "config.unlock.Farming9": "Çiftçilik seviye 9",
+  "config.unlock.Robin": "Robin'den satın al",
+
+  "config.section.robin": "Robin'in dükkânı",
+  "config.section.robin.tooltip": "Yalnızca tarif kilidi 'Robin'den satın al' olduğunda kullanılır.",
+  "config.robin-recipe.name": "Tarif fiyatı",
+  "config.robin-recipe.tooltip": "Robin'in dükkânında huni tarifinin altın fiyatı.",
+  "config.robin-hopper.name": "Huni fiyatı",
+  "config.robin-hopper.tooltip": "Robin'in dükkânında bir huninin altın fiyatı."
+}

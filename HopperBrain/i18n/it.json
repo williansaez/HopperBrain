@@ -1,0 +1,25 @@
+{
+  "config.section.recipe": "Ricetta della tramoggia",
+  "config.cost.name": "Costo della ricetta",
+  "config.cost.tooltip": "Ingredienti per creare una tramoggia. Originale: 10 legno duro, 1 lingotto d'iridio, 1 lingotto radioattivo. Lascia su Originale se usi Primitive Automate.",
+  "config.cost.Vanilla": "Originale",
+  "config.cost.Copper": "Rame: 50 legno, 5 lingotti di rame",
+  "config.cost.Iron": "Ferro: 10 legno duro, 5 lingotti di ferro",
+  "config.cost.Gold": "Oro: 10 legno duro, 5 lingotti d'oro, 3 argilla",
+  "config.cost.Iridium": "Iridio: 10 legno duro, 1 lingotto d'iridio, 1 batteria",
+
+  "config.unlock.name": "Sblocco della ricetta",
+  "config.unlock.tooltip": "Quando ottieni la ricetta della tramoggia. Vale dalla mattina seguente; una ricetta imparata non viene mai rimossa. Lascia su Originale se usi Primitive Automate.",
+  "config.unlock.Vanilla": "Originale (Stanza delle noci di Qi)",
+  "config.unlock.Start": "Dall'inizio",
+  "config.unlock.Farming4": "Agricoltura livello 4",
+  "config.unlock.Farming9": "Agricoltura livello 9",
+  "config.unlock.Robin": "Compra da Robin",
+
+  "config.section.robin": "Negozio di Robin",
+  "config.section.robin.tooltip": "Usato solo se lo sblocco della ricetta è «Compra da Robin».",
+  "config.robin-recipe.name": "Prezzo della ricetta",
+  "config.robin-recipe.tooltip": "Prezzo in oro della ricetta della tramoggia nel negozio di Robin.",
+  "config.robin-hopper.name": "Prezzo della tramoggia",
+  "config.robin-hopper.tooltip": "Prezzo in oro di una tramoggia nel negozio di Robin."
+}

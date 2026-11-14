@@ -1,0 +1,25 @@
+{
+  "config.section.recipe": "Recette de la trémie",
+  "config.cost.name": "Coût de la recette",
+  "config.cost.tooltip": "Ingrédients pour fabriquer une trémie. Original : 10 bois dur, 1 lingot d'iridium, 1 lingot radioactif. Laissez sur Original si vous utilisez Primitive Automate.",
+  "config.cost.Vanilla": "Original",
+  "config.cost.Copper": "Cuivre : 50 bois, 5 lingots de cuivre",
+  "config.cost.Iron": "Fer : 10 bois dur, 5 lingots de fer",
+  "config.cost.Gold": "Or : 10 bois dur, 5 lingots d'or, 3 argiles",
+  "config.cost.Iridium": "Iridium : 10 bois dur, 1 lingot d'iridium, 1 batterie",
+
+  "config.unlock.name": "Déblocage de la recette",
+  "config.unlock.tooltip": "Quand vous obtenez la recette de la trémie. S'applique le lendemain matin ; une recette apprise n'est jamais retirée. Laissez sur Original si vous utilisez Primitive Automate.",
+  "config.unlock.Vanilla": "Original (salle des noix de Qi)",
+  "config.unlock.Start": "Dès le début",
+  "config.unlock.Farming4": "Agriculture niveau 4",
+  "config.unlock.Farming9": "Agriculture niveau 9",
+  "config.unlock.Robin": "Acheter chez Robin",
+
+  "config.section.robin": "Boutique de Robin",
+  "config.section.robin.tooltip": "Utilisé seulement si le déblocage de la recette est « Acheter chez Robin ».",
+  "config.robin-recipe.name": "Prix de la recette",
+  "config.robin-recipe.tooltip": "Prix en or de la recette de la trémie chez Robin.",
+  "config.robin-hopper.name": "Prix de la trémie",
+  "config.robin-hopper.tooltip": "Prix en or d'une trémie chez Robin."
+}

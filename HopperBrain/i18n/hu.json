@@ -1,0 +1,25 @@
+{
+  "config.section.recipe": "Tölcsér recept",
+  "config.cost.name": "Recept ára",
+  "config.cost.tooltip": "A tölcsér elkészítéséhez szükséges hozzávalók. Eredeti: 10 keményfa, 1 irídiumrúd, 1 radioaktív rúd. Hagyd Eredetin, ha a Primitive Automate-et használod.",
+  "config.cost.Vanilla": "Eredeti",
+  "config.cost.Copper": "Réz: 50 fa, 5 rézrúd",
+  "config.cost.Iron": "Vas: 10 keményfa, 5 vasrúd",
+  "config.cost.Gold": "Arany: 10 keményfa, 5 aranyrúd, 3 agyag",
+  "config.cost.Iridium": "Irídium: 10 keményfa, 1 irídiumrúd, 1 akkumulátor",
+
+  "config.unlock.name": "Recept feloldása",
+  "config.unlock.tooltip": "Mikor kapod meg a tölcsér receptjét. Másnap reggeltől érvényes; a megtanult recept soha nem törlődik. Hagyd Eredetin, ha a Primitive Automate-et használod.",
+  "config.unlock.Vanilla": "Eredeti (Qi diós terme)",
+  "config.unlock.Start": "A kezdetektől",
+  "config.unlock.Farming4": "Gazdálkodás 4. szint",
+  "config.unlock.Farming9": "Gazdálkodás 9. szint",
+  "config.unlock.Robin": "Megvétel Robintól",
+
+  "config.section.robin": "Robin boltja",
+  "config.section.robin.tooltip": "Csak akkor használt, ha a recept feloldása „Megvétel Robintól”.",
+  "config.robin-recipe.name": "Recept ára",
+  "config.robin-recipe.tooltip": "A tölcsér receptjének ára aranyban Robin boltjában.",
+  "config.robin-hopper.name": "Tölcsér ára",
+  "config.robin-hopper.tooltip": "Egy tölcsér ára aranyban Robin boltjában."
+}
