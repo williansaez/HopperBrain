@@ -10,6 +10,7 @@ Automate is great, but it makes the early game too easy: any chest placed next t
 - [Examples](#examples)
 - [Install](#install)
 - [Getting hoppers](#getting-hoppers)
+- [Configuration](#configuration)
 - [Compatibility](#compatibility)
 - [Known limitations](#known-limitations)
 - [FAQ](#faq)
@@ -88,14 +89,33 @@ You can add or remove the mod mid-save. Nothing is stored in your save: removing
 
 ## Getting hoppers
 
-The hopper's recipe, price and unlock are **unchanged** (vanilla: Mr. Qi's shop on Ginger Island; 10 hardwood, 1 iridium bar, 1 radioactive bar). That's on purpose: Stardew still has plenty of game left after the island.
+By default the hopper's recipe, price and unlock are **vanilla** (Mr. Qi's Walnut Room on Ginger Island; 10 hardwood, 1 iridium bar, 1 radioactive bar). That's on purpose: Stardew still has plenty of game left after the island.
 
-Want automation earlier? Install [Primitive Automate](https://www.nexusmods.com/stardewvalley/mods/29973) alongside. It makes the hopper cheaper and unlocks it earlier, and its options pair well with this mod.
+Want automation earlier? Change the recipe cost and unlock in the [configuration](#configuration). Mr. Qi keeps selling the hopper and its recipe in every mode.
+
+## Configuration
+
+Open **Mod Options** with [Generic Mod Config Menu](https://www.nexusmods.com/stardewvalley/mods/5098) (optional), or edit `Mods/HopperBrain/config.json` after the first launch.
+
+| Option | Values | Default |
+|---|---|---|
+| `RecipeCost` | `Vanilla` (10 hardwood, 1 iridium bar, 1 radioactive bar) · `Copper` (50 wood, 5 copper bars) · `Iron` (10 hardwood, 5 iron bars) · `Gold` (10 hardwood, 5 gold bars, 3 clay) · `Iridium` (10 hardwood, 1 iridium bar, 1 battery pack) | `Vanilla` |
+| `RecipeUnlock` | `Vanilla` (Qi's Walnut Room) · `Start` · `Farming4` · `Farming9` · `Robin` (buy at Robin's shop) | `Vanilla` |
+| `RobinRecipePrice` | gold, used only when `RecipeUnlock` is `Robin` | `50000` |
+| `RobinHopperPrice` | gold per hopper, used only when `RecipeUnlock` is `Robin` | `10000` |
+
+- A new unlock takes effect the **next morning**. A recipe you already learned is never removed.
+- `Farming4` / `Farming9` use your base Farming level, not food or gear buffs.
+- Robin sells nothing hopper-related unless `RecipeUnlock` is `Robin`. Her recipe entry disappears once you know the recipe.
+- Changing the cost in Mod Options updates the recipe without restarting (reopen the crafting menu).
+- If `config.json` has an invalid value, the mod logs a warning and uses the defaults.
+- **Using [Primitive Automate](https://www.nexusmods.com/stardewvalley/mods/29973)?** Leave both options on `Vanilla` so the two mods don't fight over the recipe.
 
 ## Compatibility
 
 - Stardew Valley 1.6.15, SMAPI 4.5.2, Automate 2.6.1: tested in single-player.
-- Multiplayer: not tested. Automate only runs automation on the host, and this mod changes the same code, so it should behave the same.
+- Multiplayer: not tested. Automate only runs automation on the host, and this mod changes the same code, so it should behave the same. Configuration is per player: each player's own `config.json` decides their recipe cost, unlock and Robin's shop.
+- Mods that replace Robin's whole shop (for example Shop Tile Framework packs like Robin Shop Overhaul) may hide the `Robin` unlock entries.
 - [Super Hopper](https://www.nexusmods.com/stardewvalley/mods/9418): Automate already ignores super hoppers, so they keep working as before and don't count as a "brain".
 - Mods that add machines through Automate (PFMAutomate, Extra Machine Config, etc.): their machines are still machines and follow the rules above.
 
@@ -116,7 +136,7 @@ Want automation earlier? Install [Primitive Automate](https://www.nexusmods.com/
 
 **Does the vanilla hopper behaviour still work?** Yes, the mod doesn't touch the game's own hopper logic.
 
-**Is there a config?** No. The rules are the mod.
+**Is there a config?** Yes, for the hopper recipe cost and unlock (see [Configuration](#configuration)). The connection rules themselves aren't configurable: the rules are the mod.
 
 ## Building from source
 
@@ -135,8 +155,9 @@ Layout:
 
 - `HopperBrain/GroupPartitioner.cs`: the connection rules, pure code with no game references.
 - `HopperBrain/AutomatePatches.cs`: Harmony patch that re-splits Automate's groups with those rules.
-- `HopperBrain/ModEntry.cs`: setup, lets the hopper store items, and the safety switch that turns Automate off if the patch fails.
-- `HopperBrain.Tests/`: xUnit tests for the rules.
+- `HopperBrain/HopperRecipe.cs`, `HopperBrain/ModConfig.cs`: recipe cost/unlock options, pure code.
+- `HopperBrain/ModEntry.cs`: setup, lets the hopper store items, recipe/shop edits, Mod Options page, and the safety switch that turns Automate off if the patch fails.
+- `HopperBrain.Tests/`: xUnit tests for the rules and options.
 
 ## Credits
 
@@ -144,6 +165,11 @@ Layout:
 - Inspired by [Super Hopper](https://www.nexusmods.com/stardewvalley/mods/9418), [Hopper Extractor](https://www.nexusmods.com/stardewvalley/mods/16688), [Primitive Automate](https://www.nexusmods.com/stardewvalley/mods/29973), [Smart Filtered Hopper](https://www.nexusmods.com/stardewvalley/mods/44714) and [Hopper Collector](https://www.nexusmods.com/stardewvalley/mods/45783).
 
 ## Changelog
+
+### 1.1.0
+- Configurable hopper recipe cost (Copper, Iron, Gold, Iridium, Vanilla) and unlock (start, Farming 4, Farming 9, buy from Robin, Vanilla). Defaults stay vanilla.
+- Optional Generic Mod Config Menu page.
+- Invalid `config.json` values fall back to defaults with a warning.
 
 ### 1.0.0
 - First release.
