@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <Compile Include="..\HopperBrain\GroupPartitioner.cs" Link="GroupPartitioner.cs" />
+    <Compile Include="..\HopperBrain\HopperRecipe.cs" Link="HopperRecipe.cs" />
     <Using Include="Xunit" />
   </ItemGroup>
 
