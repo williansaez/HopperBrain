@@ -30,3 +30,16 @@ After 1 in-game hour, run `automate summary` in the SMAPI console.
 | 8 | `B H` + tapper tree, try chest on each side of the hopper (left, right, above, below) | tapper output goes into the chest in all 4 cases, never the hopper | OK |
 
 Result (2026-11-13): user confirmed all layouts work as expected. SMAPI log after the session: save loaded, no errors from Hopper Brain or Automate.
+
+# In-game verification — Hopper Brain 1.1.0 (config)
+
+Change options in the game: title screen or in-game menu → **Mod Options** (Generic Mod Config Menu) → Hopper Brain. Sleep once after changing the unlock.
+
+| # | Setup | Expected | Result |
+|---|---|---|---|
+| 1 | Defaults (Vanilla / Vanilla), save without the hopper recipe | no hopper recipe in crafting menu; Robin sells nothing new | |
+| 2 | Cost `Iron`, unlock `From the start`, sleep | recipe learned; shows 10 Hardwood + 5 Iron Bar | |
+| 3 | Cost `Copper`, unlock `Farming level 4`, save with Farming ≥ 4, sleep | recipe learned; shows 50 Wood + 5 Copper Bar | |
+| 4 | Unlock `Buy from Robin` (save **without** the recipe) | Robin sells the recipe for 50,000g and a hopper for 10,000g | |
+| 5 | Buy the recipe from Robin, reopen her shop | recipe gone from her shop; hopper still sold | |
+| 6 | Change cost in Mod Options mid-game, open crafting menu | new cost shown without restarting | |
