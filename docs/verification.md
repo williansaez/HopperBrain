@@ -40,6 +40,6 @@ Change options in the game: title screen or in-game menu → **Mod Options** (Ge
 | 1 | Defaults (Vanilla / Vanilla), save without the hopper recipe | no hopper recipe in crafting menu; Robin sells nothing new | |
 | 2 | Cost `Iron`, unlock `From the start`, sleep | recipe learned; shows 10 Hardwood + 5 Iron Bar | |
 | 3 | Cost `Copper`, unlock `Farming level 4`, save with Farming ≥ 4, sleep | recipe learned; shows 50 Wood + 5 Copper Bar | |
-| 4 | Unlock `Buy from Robin` (save **without** the recipe) | Robin sells the recipe for 50,000g and a hopper for 10,000g | |
+| 4 | Unlock `Buy from Robin` (save **without** the recipe) | Robin sells the recipe for 50,000g and a hopper for 10,000g. Note: "[STF] Robin Shop Overhaul" is installed and may replace her stock — if nothing shows, say so | |
 | 5 | Buy the recipe from Robin, reopen her shop | recipe gone from her shop; hopper still sold | |
 | 6 | Change cost in Mod Options mid-game, open crafting menu | new cost shown without restarting | |
