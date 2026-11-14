@@ -29,7 +29,17 @@ internal sealed class ModEntry : Mod
 
     public override void Entry(IModHelper helper)
     {
-        this.Config = helper.ReadConfig<ModConfig>();
+        // a broken config must not stop the Automate patch below
+        try
+        {
+            this.Config = helper.ReadConfig<ModConfig>();
+        }
+        catch (Exception ex)
+        {
+            this.Monitor.Log($"Couldn't read config.json, using defaults. Fix or delete the file to change settings. Details: {ex.Message}", LogLevel.Warn);
+            this.Config = new ModConfig();
+        }
+        this.Config.Normalize();
 
         helper.Events.Content.AssetRequested += this.OnAssetRequested;
         helper.Events.GameLoop.GameLaunched += this.OnGameLaunched;
@@ -96,7 +106,7 @@ internal sealed class ModEntry : Mod
                     ItemId = HopperItemId,
                     Price = HopperRecipe.ClampPrice(this.Config.RobinHopperPrice)
                 });
-            });
+            }, AssetEditPriority.Late); // after packs that replace the whole Carpenter shop
         }
     }
 
@@ -104,7 +114,7 @@ internal sealed class ModEntry : Mod
     private void OnDayStarted(object? sender, DayStartedEventArgs e)
     {
         Farmer player = Game1.player;
-        if (HopperRecipe.ShouldKnow(this.Config.RecipeUnlock, player.FarmingLevel) && !player.craftingRecipes.ContainsKey(RecipeName))
+        if (HopperRecipe.ShouldKnow(this.Config.RecipeUnlock, player.farmingLevel.Value /* base level, ignoring food/gear buffs */) && !player.craftingRecipes.ContainsKey(RecipeName))
         {
             player.craftingRecipes.Add(RecipeName, 0);
             this.Monitor.Log($"Learned the hopper recipe ({this.Config.RecipeUnlock}).", LogLevel.Info);
@@ -125,6 +135,7 @@ internal sealed class ModEntry : Mod
             reset: () => this.Config = new ModConfig(),
             save: () =>
             {
+                this.Config.Normalize();
                 this.Helper.WriteConfig(this.Config);
                 this.Helper.GameContent.InvalidateCache("Data/CraftingRecipes");
                 this.Helper.GameContent.InvalidateCache("Data/Shops");
