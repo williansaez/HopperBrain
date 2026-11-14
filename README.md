@@ -166,6 +166,9 @@ Layout:
 
 ## Changelog
 
+### 1.1.1
+- Config menu translated into all game languages: English, Chinese, French, German, Hungarian, Italian, Japanese, Korean, Portuguese, Russian, Spanish and Turkish. Corrections from native speakers welcome.
+
 ### 1.1.0
 - Configurable hopper recipe cost (Copper, Iron, Gold, Iridium, Vanilla) and unlock (start, Farming 4, Farming 9, buy from Robin, Vanilla). Defaults stay vanilla.
 - Optional Generic Mod Config Menu page.
